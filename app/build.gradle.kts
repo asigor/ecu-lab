@@ -35,12 +35,24 @@ android {
     }
 }
 
+val installWebDependencies by tasks.registering(Exec::class) {
+    workingDir(rootProject.projectDir)
+    commandLine("npm", "ci")
+    inputs.files(
+        rootProject.file("package.json"),
+        rootProject.file("package-lock.json")
+    )
+    outputs.dir(rootProject.file("node_modules"))
+}
+
 val buildWebApp by tasks.registering(Exec::class) {
+    dependsOn(installWebDependencies)
     workingDir(rootProject.projectDir)
     commandLine("npm", "run", "build")
     inputs.dir(rootProject.file("src"))
     inputs.file(rootProject.file("index.html"))
     inputs.file(rootProject.file("package.json"))
+    inputs.file(rootProject.file("package-lock.json"))
     outputs.dir(rootProject.file("dist"))
 }
 
