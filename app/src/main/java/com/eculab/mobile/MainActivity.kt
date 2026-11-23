@@ -2,11 +2,9 @@ package com.eculab.mobile
 
 import android.app.Activity
 import android.os.Bundle
-import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.Toast
 
 class MainActivity : Activity() {
     private lateinit var webView: WebView
@@ -16,7 +14,7 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
 
         webView = WebView(this).apply {
-            set背景ColorCompat()
+            setEngineBackground()
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true
             settings.databaseEnabled = true
@@ -36,7 +34,7 @@ class MainActivity : Activity() {
         }
     }
 
-    private fun WebView.set背景ColorCompat() {
+    private fun WebView.setEngineBackground() {
         setBackgroundColor(android.graphics.Color.rgb(12, 15, 20))
     }
 
