@@ -17,7 +17,7 @@ From the repository root:
 
 ```bash
 npm ci
-./gradlew :app:assembleDebug
+gradle :app:assembleDebug
 ```
 
 Gradle runs `npm run build` and copies `dist/` into the Android app assets before
