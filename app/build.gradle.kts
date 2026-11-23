@@ -35,6 +35,10 @@ android {
     }
 }
 
+dependencies {
+    implementation("androidx.webkit:webkit:1.11.0")
+}
+
 val installWebDependencies by tasks.registering(Exec::class) {
     workingDir(rootProject.projectDir)
     commandLine("npm", "ci")
